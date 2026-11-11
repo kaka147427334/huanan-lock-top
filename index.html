@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>华南大区 · 10月锁单双榜</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+    background:#eef0f4;color:#14181f;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:22px}
+  /* ---------- header ---------- */
+  .hero{
+    position:relative;overflow:hidden;border-radius:18px;padding:26px 28px 22px;
+    background:linear-gradient(120deg,#101419 0%,#1d2632 55%,#2a1416 100%);
+    color:#fff;box-shadow:0 10px 30px rgba(16,20,25,.22);
+  }
+  .hero:after{
+    content:"";position:absolute;right:-70px;top:-90px;width:320px;height:320px;border-radius:50%;
+    background:radial-gradient(circle,rgba(216,23,42,.55),rgba(216,23,42,0) 68%);
+  }
+  .hero .kicker{font-size:12px;letter-spacing:3px;color:#ff7b7b;font-weight:700}
+  .hero h1{font-size:32px;font-weight:800;letter-spacing:1px;margin:6px 0 4px}
+  .hero h1 span{color:#ff5a4d}
+  .hero .meta{font-size:12.5px;color:#a8b1bd;line-height:1.65;margin-top:6px;max-width:840px}
+  /* ---------- kpi ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:-6px;position:relative;z-index:2}
+  .kpi{background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 4px 14px rgba(20,24,31,.07);border-top:3px solid #d8172a}
+  .kpi .lab{font-size:12px;color:#78818f;font-weight:600}
+  .kpi .val{font-size:26px;font-weight:800;margin-top:4px;letter-spacing:-.5px}
+  .kpi .val em{font-size:12px;font-style:normal;font-weight:600;color:#78818f;margin-left:2px}
+  .kpi .sub{font-size:11.5px;color:#98a1ae;margin-top:3px}
+  .kpi.alt{border-top-color:#2f6fd0} .kpi.alt2{border-top-color:#0f9d58} .kpi.alt3{border-top-color:#c9a227}
+  /* ---------- section ---------- */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+  .card{background:#fff;border-radius:16px;padding:18px 20px 14px;box-shadow:0 4px 16px rgba(20,24,31,.07)}
+  .card h2{font-size:17px;font-weight:800;display:flex;align-items:center;gap:9px}
+  .card h2 .dot{width:6px;height:18px;border-radius:3px;background:#d8172a}
+  .card h2 .dot.blue{background:#2f6fd0}
+  .card .hint{font-size:11.5px;color:#8b95a3;margin:5px 0 12px;line-height:1.5}
+  /* ---------- ranking rows ---------- */
+  .row{display:flex;gap:11px;align-items:flex-start;padding:9px 8px;border-radius:10px}
+  .row:nth-child(odd){background:#fafbfc}
+  .row.top3{background:linear-gradient(90deg,#fff6f2,#fbfcfd);box-shadow:inset 3px 0 0 #e0a63a}
+  .row.top3:nth-child(1){box-shadow:inset 3px 0 0 #d8172a}
+  .rk{flex:0 0 24px;height:24px;border-radius:7px;background:#eceff3;color:#6d7684;
+      font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .row.top3 .rk{background:#1d2632;color:#fff}
+  .rmain{flex:1;min-width:0}
+  .rline{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+  .sname{font-size:13.5px;font-weight:700;color:#14181f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sval{font-size:14px;font-weight:800;color:#d8172a;white-space:nowrap}
+  .sval em{font-size:11px;font-style:normal;color:#98a1ae;margin-left:1px}
+  .rline.sub{margin-top:3px}
+  .mgr{font-size:11px;color:#8b95a3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tags{display:flex;gap:5px;flex:0 0 auto}
+  .tag{font-size:10.5px;padding:1px 6px;border-radius:5px;white-space:nowrap;font-weight:700}
+  .tag.plain{background:#f0f2f5;color:#78818f;font-weight:600}
+  .tag.hit{background:#fdecec;color:#c3192b}
+  .tag.near{background:#fdf4e6;color:#a8761a}
+  .tag.miss{background:#eef1f5;color:#6d7684}
+  .tag.up{background:#fdecec;color:#c3192b}
+  .tag.down{background:#eaf5ee;color:#0f7a45}
+  .tag.flat{background:#eef1f5;color:#6d7684}
+  .barbg{height:6px;background:#f0f2f5;border-radius:4px;margin-top:6px;overflow:hidden}
+  .bar{height:100%;border-radius:4px;background:linear-gradient(90deg,#d8172a,#ff6a52)}
+  .bar.gold{background:linear-gradient(90deg,#e0a63a,#f4cd72)}
+  .bar.gray{background:linear-gradient(90deg,#8b95a3,#b9c1cc)}
+  /* ---------- tables ---------- */
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  thead th{font-size:11px;color:#8b95a3;font-weight:700;text-align:right;padding:7px 6px;border-bottom:1.5px solid #e8ebf0;white-space:nowrap}
+  thead th.l{text-align:left}
+  tbody td{padding:7px 6px;border-bottom:1px solid #f2f4f7;text-align:right}
+  tbody td.c-name{text-align:left;font-weight:700;font-size:12.5px;max-width:230px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  tbody td.c-idx{text-align:left;color:#a8b1bd;font-weight:700;width:26px}
+  tbody td.c-mgr{text-align:left;color:#8b95a3;font-size:11px}
+  tbody td.b{font-weight:800;color:#14181f}
+  tbody tr:hover{background:#fafbfc}
+  .pill{display:inline-block;padding:1px 7px;border-radius:5px;font-weight:800;font-size:11.5px}
+  .pill.hit{background:#fdecec;color:#c3192b}
+  .pill.mid{background:#fdf4e6;color:#a8761a}
+  .pill.low{background:#eaf5ee;color:#0f7a45}
+  .up{color:#c3192b} .down{color:#0f7a45}
+  /* ---------- footer ---------- */
+  .notes{margin-top:16px;background:#fff;border-radius:14px;padding:16px 20px;box-shadow:0 4px 14px rgba(20,24,31,.06)}
+  .notes h3{font-size:13px;font-weight:800;margin-bottom:7px}
+  .notes li{font-size:11.5px;color:#6d7684;line-height:1.85;margin-left:16px}
+  .foot{text-align:center;font-size:11px;color:#a8b1bd;padding:16px 0 6px}
+  @media (max-width:900px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .grid{grid-template-columns:1fr}
+    .hero h1{font-size:24px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">LEAPMOTOR · 华南大区</div>
+    <h1>10月锁单 <span>双榜</span> · 绝对量 TOP10 &amp; 完成率 TOP10</h1>
+    <div class="meta">数据源《销售日报--城市经理》门店明细（147 家门店）· 口径：净增锁单 = 月累新增锁单 − 当期锁单退订；完成率 = 净增锁单 ÷ 全月净增目标</div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="lab">净增锁单</div><div class="val">9,237<em>台</em></div><div class="sub">月累新增 9,995 · 退订 758</div></div>
+    <div class="kpi alt"><div class="lab">全月净增目标</div><div class="val">11,022<em>台</em></div><div class="sub">差额 1,785 台</div></div>
+    <div class="kpi"><div class="lab">锁单完成率</div><div class="val">83.8%</div><div class="sub">距目标 100% 尚差 16.2pt</div></div>
+    <div class="kpi alt2"><div class="lab">同比（去年同期）</div><div class="val">+15.1<em>%</em></div><div class="sub">同期 8,023 台</div></div>
+    <div class="kpi alt3"><div class="lab">达标门店</div><div class="val">16<em>家</em></div><div class="sub">目标≥30台门店 109 家，达标率 15%</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2><span class="dot"></span>锁单绝对量 TOP10 门店</h2>
+      <div class="hint">按 10 月净增锁单台次排序 · 副指标：达成率 / 同比 / 退订</div>
+      
+      <div class="row top3">
+        <div class="rk">1</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">海口零跑中心南海大道东店</span>
+            <span class="sval">203<em>台</em></span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">李博恩&陈焕友</span>
+            <span class="tags">
+              <span class="tag near">达成 96.2%</span>
+              <span class="tag yoy down">同比 -1%</span>
+              <span class="tag plain">退订 14</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar" style="width:100.0%"></div></div>
+        </div>
+      </div>
+      <div class="row top3">
+        <div class="rk">2</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">茂名零跑中心茂名大道店</span>
+            <span class="sval">183<em>台</em></span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">李传华&陈焕友</span>
+            <span class="tags">
+              <span class="tag hit">达成 148.8%</span>
+              <span class="tag yoy up">同比 +68%</span>
+              <span class="tag plain">退订 6</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar" style="width:90.1%"></div></div>
+        </div>
+      </div>
+      <div class="row top3">
+        <div class="rk">3</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">东莞零跑中心寮步车城店</span>
+            <span class="sval">176<em>台</em></span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">方任昊&赵全建</span>
+            <span class="tags">
+              <span class="tag near">达成 90.3%</span>
+              <span class="tag yoy down">同比 -6%</span>
+              <span class="tag plain">退订 2</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar" style="width:86.7%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">4</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">惠州零跑中心惠南汽车城店</span>
+            <span class="sval">173<em>台</em></span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">胡浩&赵全建</span>
+            <span class="tags">
+              <span class="tag near">达成 96.6%</span>
+              <span class="tag yoy up">同比 +19%</span>
+              <span class="tag plain">退订 9</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar" style="width:85.2%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">5</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">佛山零跑中心三水友好车城店</span>
+            <span class="sval">171<em>台</em></span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">余子恩&容方立</span>
+            <span class="tags">
+              <span class="tag hit">达成 102.4%</span>
+              <span class="tag yoy up">同比 +34%</span>
+              <span class="tag plain">退订 2</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar" style="width:84.2%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">6</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">珠海零跑中心上冲车城店</span>
+            <span class="sval">170<em>台</em></span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">秦启超&容方立</span>
+            <span class="tags">
+              <span class="tag hit">达成 110.4%</span>
+              <span class="tag yoy up">同比 +1%</span>
+              <span class="tag plain">退订 2</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar" style="width:83.7%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">7</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">惠州零跑中心金山汽车城店</span>
+            <span class="sval">169<em>台</em></span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">胡浩&赵全建</span>
+            <span class="tags">
+              <span class="tag near">达成 96.6%</span>
+              <span class="tag yoy up">同比 +19%</span>
+              <span class="tag plain">退订 24</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar" style="width:83.3%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">8</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">佛山零跑中心顺德大良车城店</span>
+            <span class="sval">164<em>台</em></span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">高峰强&容方立</span>
+            <span class="tags">
+              <span class="tag near">达成 90.6%</span>
+              <span class="tag yoy up">同比 +3%</span>
+              <span class="tag plain">退订 3</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar" style="width:80.8%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">9</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">海口零跑中心南海大道店（销售）</span>
+            <span class="sval">161<em>台</em></span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">李博恩&陈焕友</span>
+            <span class="tags">
+              <span class="tag miss">达成 87.5%</span>
+              <span class="tag yoy up">同比 +3%</span>
+              <span class="tag plain">退订 14</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar" style="width:79.3%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">10</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">东莞零跑中心莞太路店</span>
+            <span class="sval">154<em>台</em></span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">方任昊&赵全建</span>
+            <span class="tags">
+              <span class="tag near">达成 92.2%</span>
+              <span class="tag yoy up">同比 +5%</span>
+              <span class="tag plain">退订 6</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar" style="width:75.9%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="dot blue"></span>锁单完成率 TOP10 门店</h2>
+      <div class="hint">按 净增锁单 ÷ 全月目标 排序 · 门槛：全月目标 ≥ 30 台（样本 109 家）</div>
+      
+      <div class="row top3">
+        <div class="rk">1</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">茂名零跑中心茂名大道店</span>
+            <span class="sval">148.8%</span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">李传华&陈焕友</span>
+            <span class="tags">
+              <span class="tag plain">净增 183 / 目标 123</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar gold" style="width:100.0%"></div></div>
+        </div>
+      </div>
+      <div class="row top3">
+        <div class="rk">2</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">汕尾体验中心汕尾大道店</span>
+            <span class="sval">140.0%</span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">陈恒惕&赵全建</span>
+            <span class="tags">
+              <span class="tag plain">净增 84 / 目标 60</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar gold" style="width:94.1%"></div></div>
+        </div>
+      </div>
+      <div class="row top3">
+        <div class="rk">3</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">东莞零跑中心长安振安东路店</span>
+            <span class="sval">125.0%</span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">方任昊&赵全建</span>
+            <span class="tags">
+              <span class="tag plain">净增 90 / 目标 72</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar gold" style="width:84.0%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">4</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">汕头零跑中心汕汾路店</span>
+            <span class="sval">117.7%</span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">熊俊晖&张帅</span>
+            <span class="tags">
+              <span class="tag plain">净增 153 / 目标 130</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar red" style="width:79.1%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">5</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">珠海体验中心西部车城店</span>
+            <span class="sval">116.2%</span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">秦启超&容方立</span>
+            <span class="tags">
+              <span class="tag plain">净增 79 / 目标 68</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar red" style="width:78.1%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">6</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">东莞零跑中心常朗路店</span>
+            <span class="sval">112.4%</span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">方任昊&赵全建</span>
+            <span class="tags">
+              <span class="tag plain">净增 145 / 目标 129</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar red" style="width:75.5%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">7</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">珠海零跑中心上冲车城店</span>
+            <span class="sval">110.4%</span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">秦启超&容方立</span>
+            <span class="tags">
+              <span class="tag plain">净增 170 / 目标 154</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar red" style="width:74.2%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">8</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">湛江零跑中心海田车城店</span>
+            <span class="sval">108.3%</span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">李传华&陈焕友</span>
+            <span class="tags">
+              <span class="tag plain">净增 130 / 目标 120</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar red" style="width:72.8%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">9</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">佛山零跑中心桂澜路店</span>
+            <span class="sval">107.5%</span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">余子恩&容方立</span>
+            <span class="tags">
+              <span class="tag plain">净增 57 / 目标 53</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar red" style="width:72.3%"></div></div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="rk">10</div>
+        <div class="rmain">
+          <div class="rline">
+            <span class="sname">韶关体验中心浈江大道店</span>
+            <span class="sval">104.1%</span>
+          </div>
+          <div class="rline sub">
+            <span class="mgr">余子恩&赵全建</span>
+            <span class="tags">
+              <span class="tag plain">净增 51 / 目标 49</span>
+            </span>
+          </div>
+          <div class="barbg"><div class="bar red" style="width:70.0%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2><span class="dot"></span>零售经理维度（13 位 · 按净增锁单排序）</h2>
+    <div class="hint">用于定位绝对量贡献与达成率错位：量大不等于达成好</div>
+    <table>
+      <thead><tr>
+        <th class="l">#</th><th class="l">零售经理</th><th>门店数</th><th>净增锁单</th><th>全月目标</th><th>完成率</th><th>达标门店</th><th>同比</th>
+      </tr></thead>
+      <tbody><tr>
+      <td class="c-idx">1</td>
+      <td class="c-name">李传华&陈焕友</td>
+      <td class="c-num">30</td>
+      <td class="c-num b">1,281</td>
+      <td class="c-num">1,537</td>
+      <td class="c-num"><span class="pill mid">83.3%</span></td>
+      <td class="c-num">5/30</td>
+      <td class="c-num up">+14.7%</td>
+    </tr><tr>
+      <td class="c-idx">2</td>
+      <td class="c-name">余子恩&容方立</td>
+      <td class="c-num">16</td>
+      <td class="c-num b">1,221</td>
+      <td class="c-num">1,352</td>
+      <td class="c-num"><span class="pill hit">90.3%</span></td>
+      <td class="c-num">4/16</td>
+      <td class="c-num up">+19.0%</td>
+    </tr><tr>
+      <td class="c-idx">3</td>
+      <td class="c-name">黄伟峰&容方立</td>
+      <td class="c-num">14</td>
+      <td class="c-num b">1,168</td>
+      <td class="c-num">1,469</td>
+      <td class="c-num"><span class="pill low">79.5%</span></td>
+      <td class="c-num">1/14</td>
+      <td class="c-num up">+12.9%</td>
+    </tr><tr>
+      <td class="c-idx">4</td>
+      <td class="c-name">方任昊&赵全建</td>
+      <td class="c-num">14</td>
+      <td class="c-num b">1,007</td>
+      <td class="c-num">1,178</td>
+      <td class="c-num"><span class="pill mid">85.5%</span></td>
+      <td class="c-num">3/14</td>
+      <td class="c-num up">+8.0%</td>
+    </tr><tr>
+      <td class="c-idx">5</td>
+      <td class="c-name">熊俊晖&张帅</td>
+      <td class="c-num">15</td>
+      <td class="c-num b">883</td>
+      <td class="c-num">1,076</td>
+      <td class="c-num"><span class="pill mid">82.1%</span></td>
+      <td class="c-num">4/15</td>
+      <td class="c-num up">+12.3%</td>
+    </tr><tr>
+      <td class="c-idx">6</td>
+      <td class="c-name">秦启超&容方立</td>
+      <td class="c-num">10</td>
+      <td class="c-num b">796</td>
+      <td class="c-num">888</td>
+      <td class="c-num"><span class="pill mid">89.6%</span></td>
+      <td class="c-num">2/10</td>
+      <td class="c-num up">+20.1%</td>
+    </tr><tr>
+      <td class="c-idx">7</td>
+      <td class="c-name">罗捷&张帅</td>
+      <td class="c-num">7</td>
+      <td class="c-num b">583</td>
+      <td class="c-num">707</td>
+      <td class="c-num"><span class="pill mid">82.5%</span></td>
+      <td class="c-num">1/7</td>
+      <td class="c-num up">+33.1%</td>
+    </tr><tr>
+      <td class="c-idx">8</td>
+      <td class="c-name">李博恩&陈焕友</td>
+      <td class="c-num">11</td>
+      <td class="c-num b">569</td>
+      <td class="c-num">649</td>
+      <td class="c-num"><span class="pill mid">87.7%</span></td>
+      <td class="c-num">1/11</td>
+      <td class="c-num up">+9.2%</td>
+    </tr><tr>
+      <td class="c-idx">9</td>
+      <td class="c-name">胡浩&赵全建</td>
+      <td class="c-num">9</td>
+      <td class="c-num b">565</td>
+      <td class="c-num">706</td>
+      <td class="c-num"><span class="pill mid">80.0%</span></td>
+      <td class="c-num">0/9</td>
+      <td class="c-num up">+18.2%</td>
+    </tr><tr>
+      <td class="c-idx">10</td>
+      <td class="c-name">陈恒惕&赵全建</td>
+      <td class="c-num">7</td>
+      <td class="c-num b">409</td>
+      <td class="c-num">451</td>
+      <td class="c-num"><span class="pill hit">90.7%</span></td>
+      <td class="c-num">1/7</td>
+      <td class="c-num up">+25.5%</td>
+    </tr><tr>
+      <td class="c-idx">11</td>
+      <td class="c-name">郭天文&张帅</td>
+      <td class="c-num">8</td>
+      <td class="c-num b">407</td>
+      <td class="c-num">567</td>
+      <td class="c-num"><span class="pill low">71.8%</span></td>
+      <td class="c-num">0/8</td>
+      <td class="c-num up">+10.3%</td>
+    </tr><tr>
+      <td class="c-idx">12</td>
+      <td class="c-name">高峰强&容方立</td>
+      <td class="c-num">4</td>
+      <td class="c-num b">260</td>
+      <td class="c-num">338</td>
+      <td class="c-num"><span class="pill low">76.9%</span></td>
+      <td class="c-num">0/4</td>
+      <td class="c-num down">-1.5%</td>
+    </tr><tr>
+      <td class="c-idx">13</td>
+      <td class="c-name">余子恩&赵全建</td>
+      <td class="c-num">2</td>
+      <td class="c-num b">88</td>
+      <td class="c-num">104</td>
+      <td class="c-num"><span class="pill mid">84.6%</span></td>
+      <td class="c-num">1/2</td>
+      <td class="c-num up">+29.4%</td>
+    </tr></tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2><span class="dot blue"></span>尾部预警 · 达成率最低 5 家（目标≥30台且在网营业）</h2>
+    <div class="hint">已剔除待审批 / 退网 / 零供车新店，避免无效目标拉低达成</div>
+    <table>
+      <thead><tr>
+        <th class="l">门店</th><th class="l">零售经理</th><th>净增锁单</th><th>全月目标</th><th>完成率</th><th>缺口</th>
+      </tr></thead>
+      <tbody><tr>
+      <td class="c-name">惠州体验中心博罗店</td>
+      <td class="c-mgr">胡浩&赵全建</td>
+      <td class="c-num b">4</td>
+      <td class="c-num">34</td>
+      <td class="c-num"><span class="pill low">11.8%</span></td>
+      <td class="c-num">30</td>
+    </tr><tr>
+      <td class="c-name">惠州体验中心大亚湾店</td>
+      <td class="c-mgr">胡浩&赵全建</td>
+      <td class="c-num b">4</td>
+      <td class="c-num">34</td>
+      <td class="c-num"><span class="pill low">11.8%</span></td>
+      <td class="c-num">30</td>
+    </tr><tr>
+      <td class="c-name">肇庆零跑中心肇庆大道店</td>
+      <td class="c-mgr">李传华&陈焕友</td>
+      <td class="c-num b">38</td>
+      <td class="c-num">140</td>
+      <td class="c-num"><span class="pill low">27.1%</span></td>
+      <td class="c-num">102</td>
+    </tr><tr>
+      <td class="c-name">惠州体验中心惠东店</td>
+      <td class="c-mgr">胡浩&赵全建</td>
+      <td class="c-num b">13</td>
+      <td class="c-num">30</td>
+      <td class="c-num"><span class="pill low">43.3%</span></td>
+      <td class="c-num">17</td>
+    </tr><tr>
+      <td class="c-name">茂名体验中心茂水路店</td>
+      <td class="c-mgr">李传华&陈焕友</td>
+      <td class="c-num b">27</td>
+      <td class="c-num">58</td>
+      <td class="c-num"><span class="pill low">46.6%</span></td>
+      <td class="c-num">31</td>
+    </tr></tbody>
+    </table>
+  </div>
+
+  <div class="notes">
+    <h3>口径与说明</h3>
+    <ul>
+      <li>净增锁单 = 月累新增锁单 − 当期锁单退订；与《销售日报》「净增锁单」列一致。</li>
+      <li>完成率分母为 10 月全月净增目标（管理口径），非按时间进度折算。</li>
+      <li>完成率榜设 30 台目标门槛：低目标门店（如 4 台）单店波动即可放大达成率，不具可比性。</li>
+      <li>同期为去年同期锁单，用于判断绝对量增长质量；同比为正以红色标示。</li>
+      <li>榜单不含待审批、退网门店；共 147 家在册门店参与统计。</li>
+    </ul>
+  </div>
+
+  <div class="foot">华南大区零售运营 · 数据截至 10 月 31 日 · 生成于 2026-11-11</div>
+</div>
+</body>
+</html>
