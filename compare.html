@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>华南大区 · 10月锁单完成率排名对比（11/1 → 11/11）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;background:#eef0f4;color:#14181f;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:20px}
+.hero{position:relative;overflow:hidden;border-radius:16px;padding:22px 26px;background:linear-gradient(120deg,#101419,#1d2632 55%,#2a1416);color:#fff;box-shadow:0 10px 28px rgba(16,20,25,.22)}
+.hero:after{content:"";position:absolute;right:-60px;top:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(216,23,42,.5),rgba(216,23,42,0) 68%)}
+.hero .kicker{font-size:11px;letter-spacing:3px;color:#ff7b7b;font-weight:700}
+.hero h1{font-size:24px;font-weight:800;margin:5px 0 4px}
+.hero h1 span{color:#ff5a4d}
+.hero .meta{font-size:11.5px;color:#a8b1bd;margin-top:2px;line-height:1.6}
+.sum{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.s{flex:1;min-width:150px;background:rgba(255,255,255,.08);border-radius:10px;padding:9px 13px}
+.s .lab{font-size:10.5px;color:#a8b1bd}.s .v{font-size:18px;font-weight:800;margin-top:2px}
+.s .v em{font-style:normal;font-size:12px;font-weight:700}
+.s .v .dn{color:#7dd8a5} .s .v .rd{color:#ff8a80}
+.card{background:#fff;border-radius:14px;padding:14px 16px 6px;margin-top:14px;box-shadow:0 4px 14px rgba(20,24,31,.07)}
+.card h2{font-size:15px;font-weight:800;margin-bottom:2px}
+.card .hint{font-size:11px;color:#8b95a3;margin-bottom:10px;line-height:1.6}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead th{font-size:10.5px;color:#8b95a3;font-weight:700;padding:6px 5px;border-bottom:1.5px solid #e8ebf0;text-align:right;white-space:nowrap}
+thead th.l{text-align:left}
+thead .grp th{border-bottom:none;padding-bottom:2px}
+thead .sep{border-left:2px solid #eceff3}
+tbody td{padding:5px 5px;text-align:right;border-bottom:1px solid #f2f4f7;white-space:nowrap}
+tbody tr.barrow td{padding:0 5px 4px;border-bottom:1px solid #f2f4f7}
+tbody tr:hover td{background:#fafbfc}
+.rk{display:inline-flex;width:22px;height:22px;border-radius:7px;background:#eceff3;color:#6d7684;font-size:12px;font-weight:800;align-items:center;justify-content:center}
+.rk.r1{background:linear-gradient(135deg,#d8172a,#a3101f);color:#fff}
+.rk.r2{background:#1d2632;color:#fff} .rk.r3{background:#c9a227;color:#fff}
+td.nm{text-align:left;font-weight:800;font-size:12.5px}
+td.num{font-variant-numeric:tabular-nums}
+td.dim{color:#98a1ae} td.b{font-weight:800}
+td.new{color:#a8761a;font-weight:700;font-size:11px}
+td.note{text-align:left;font-size:10.5px;color:#8b95a3;max-width:210px;white-space:normal;line-height:1.45}
+.up{color:#c3192b;font-weight:700} .down{color:#0f7a45;font-weight:700} .flat{color:#98a1ae}
+.mv{display:inline-block;min-width:30px;font-weight:800;font-size:11.5px}
+.mv.up{color:#c3192b} .mv.down{color:#0f7a45} .mv.flat{color:#98a1ae}
+.mv.newm,.mv.swap{color:#a8761a}
+.barbg{height:4px;background:#f0f2f5;border-radius:3px;overflow:hidden}
+.bar{height:100%;background:linear-gradient(90deg,#d8172a,#ff6a52);border-radius:3px}
+.legend{display:flex;gap:14px;margin-top:8px;font-size:10.5px;color:#8b95a3;flex-wrap:wrap}
+.legend b{color:#5b6470}
+.notes{margin-top:14px;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 4px 14px rgba(20,24,31,.06)}
+.notes h3{font-size:12.5px;font-weight:800;margin-bottom:6px}
+.notes li{font-size:11px;color:#6d7684;line-height:1.8;margin-left:16px}
+.foot{text-align:center;font-size:10.5px;color:#a8b1bd;padding:14px 0 4px}
+</style></head><body><div class="wrap">
+<div class="hero">
+  <div class="kicker">LEAPMOTOR · 华南大区</div>
+  <h1>10月锁单完成率排名 <span>前后对比</span>（11/1 快照 → 11/11 最新）</h1>
+  <div class="meta">完成率 = 锁单 ÷ 全月净增目标 · 11/1 为《10/31 日报》快照"月累锁单"，11/11 为最新《销售日报》"净增锁单"（月累新增−当期退订，含近几日退单） · 按零售经理合并口径</div>
+  <div class="sum">
+    <div class="s"><div class="lab">大区完成率</div><div class="v">87.7% <em class="dn">→</em> 83.8% <em class="dn">(−3.9pt)</em></div></div>
+    <div class="s"><div class="lab">月累锁单</div><div class="v">9,669 <em class="dn">→</em> 9,237 <em class="rd">(−432台)</em></div></div>
+    <div class="s"><div class="lab">全月目标</div><div class="v">11,022 <em>（不变）</em></div></div>
+    <div class="s"><div class="lab">口径调整</div><div class="v">3 项<em>（详见备注）</em></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>零售经理逐人对比（按 11/11 最新排名）</h2>
+  <div class="hint">左四列 = 11/1 快照 · 中间 = 11/11 最新 · 排名变动以 11/1 为基准</div>
+  <table>
+    <thead>
+      <tr class="grp">
+        <th rowspan="2" class="l">#</th><th rowspan="2" class="l">零售经理</th>
+        <th colspan="4" class="sep">11/1 快照（10/31 报表）</th>
+        <th colspan="3" class="sep">11/11 最新</th>
+        <th colspan="3" class="sep">变动</th>
+        <th rowspan="2" class="l">备注</th>
+      </tr>
+      <tr>
+        <th class="sep">锁单</th><th>目标</th><th>达成率</th><th>排名</th>
+        <th class="sep">锁单</th><th>目标</th><th>达成率</th>
+        <th class="sep">达成率</th><th>排名</th><th>锁单</th>
+      </tr>
+    </thead>
+    <tbody><tr>
+      <td><span class="rk r1">1</span></td>
+      <td class="nm">陈恒惕</td>
+      <td class="num">412</td><td class="num dim">451</td><td class="num">91.4%</td><td class="num dim">#2</td>
+      <td class="num b">409.0</td><td class="num dim">451.0</td>
+      <td class="num b">90.7%</td>
+      <td class="num"><span class="down">-0.7pt</span></td>
+      <td class="num"><span class="mv down">▼1</span></td>
+      <td class="num"><span class="down">-3.0</span></td>
+      <td class="note">仅退 3 台，反超登顶</td>
+    </tr>
+    <tr class="barrow"><td colspan="12"><div class="barbg"><div class="bar" style="width:91%"></div></div></td></tr><tr>
+      <td><span class="rk r2">2</span></td>
+      <td class="nm">余子恩</td>
+      <td class="num">1,612</td><td class="num dim">1,794</td><td class="num">89.9%</td><td class="num dim">#3</td>
+      <td class="num b">1,309.0</td><td class="num dim">1,456.0</td>
+      <td class="num b">89.9%</td>
+      <td class="num"><span class="flat">0.0pt</span></td>
+      <td class="num"><span class="mv down">▼1</span></td>
+      <td class="num"><span class="down">-303.0</span></td>
+      <td class="note">拆出 338 目标给高峰强，达成率持平</td>
+    </tr>
+    <tr class="barrow"><td colspan="12"><div class="barbg"><div class="bar" style="width:90%"></div></div></td></tr><tr>
+      <td><span class="rk r3">3</span></td>
+      <td class="nm">秦启超</td>
+      <td class="num">825</td><td class="num dim">888</td><td class="num">92.9%</td><td class="num dim">#1</td>
+      <td class="num b">796.0</td><td class="num dim">888.0</td>
+      <td class="num b">89.6%</td>
+      <td class="num"><span class="down">-3.3pt</span></td>
+      <td class="num"><span class="mv up">▲2</span></td>
+      <td class="num"><span class="down">-29.0</span></td>
+      <td class="note">退单约 29 台，让出头名</td>
+    </tr>
+    <tr class="barrow"><td colspan="12"><div class="barbg"><div class="bar" style="width:90%"></div></div></td></tr><tr>
+      <td><span class="rk ">4</span></td>
+      <td class="nm">李博恩</td>
+      <td class="num">1,160</td><td class="num dim">1,323</td><td class="num">87.7%</td><td class="num dim">#6</td>
+      <td class="num b">569.0</td><td class="num dim">649.0</td>
+      <td class="num b">87.7%</td>
+      <td class="num"><span class="flat">0.0pt</span></td>
+      <td class="num"><span class="mv down">▼2</span></td>
+      <td class="num"><span class="down">-591.0</span></td>
+      <td class="note">674 目标划出至李传华，达成率持平</td>
+    </tr>
+    <tr class="barrow"><td colspan="12"><div class="barbg"><div class="bar" style="width:88%"></div></div></td></tr><tr>
+      <td><span class="rk ">5</span></td>
+      <td class="nm">方任昊</td>
+      <td class="num">1,015</td><td class="num dim">1,178</td><td class="num">86.2%</td><td class="num dim">#8</td>
+      <td class="num b">1,007.0</td><td class="num dim">1,178.0</td>
+      <td class="num b">85.5%</td>
+      <td class="num"><span class="down">-0.7pt</span></td>
+      <td class="num"><span class="mv down">▼3</span></td>
+      <td class="num"><span class="down">-8.0</span></td>
+      <td class="note">排名升幅最大（▲3）</td>
+    </tr>
+    <tr class="barrow"><td colspan="12"><div class="barbg"><div class="bar" style="width:85%"></div></div></td></tr><tr>
+      <td><span class="rk ">6</span></td>
+      <td class="nm">李传华</td>
+      <td class="num">768</td><td class="num dim">863</td><td class="num">89.0%</td><td class="num dim">#5</td>
+      <td class="num b">1,281.0</td><td class="num dim">1,537.0</td>
+      <td class="num b">83.3%</td>
+      <td class="num"><span class="down">-5.7pt</span></td>
+      <td class="num"><span class="mv up">▲1</span></td>
+      <td class="num"><span class="up">+513.0</span></td>
+      <td class="note">接手 674 目标，绝对量大、达成率被摊薄</td>
+    </tr>
+    <tr class="barrow"><td colspan="12"><div class="barbg"><div class="bar" style="width:83%"></div></div></td></tr><tr>
+      <td><span class="rk ">7</span></td>
+      <td class="nm">罗捷</td>
+      <td class="num">631</td><td class="num dim">707</td><td class="num">89.3%</td><td class="num dim">#4</td>
+      <td class="num b">583.0</td><td class="num dim">707.0</td>
+      <td class="num b">82.5%</td>
+      <td class="num"><span class="down">-6.8pt</span></td>
+      <td class="num"><span class="mv up">▲3</span></td>
+      <td class="num"><span class="down">-48.0</span></td>
+      <td class="note">退单致排名下滑最多（▼3）</td>
+    </tr>
+    <tr class="barrow"><td colspan="12"><div class="barbg"><div class="bar" style="width:82%"></div></div></td></tr><tr>
+      <td><span class="rk ">8</span></td>
+      <td class="nm">熊俊晖</td>
+      <td class="num">906</td><td class="num dim">1,076</td><td class="num">84.2%</td><td class="num dim">#10</td>
+      <td class="num b">883.0</td><td class="num dim">1,076.0</td>
+      <td class="num b">82.1%</td>
+      <td class="num"><span class="down">-2.1pt</span></td>
+      <td class="num"><span class="mv down">▼2</span></td>
+      <td class="num"><span class="down">-23.0</span></td>
+      <td class="note"></td>
+    </tr>
+    <tr class="barrow"><td colspan="12"><div class="barbg"><div class="bar" style="width:82%"></div></div></td></tr><tr>
+      <td><span class="rk ">9</span></td>
+      <td class="nm">胡浩</td>
+      <td class="num">612</td><td class="num dim">706</td><td class="num">86.7%</td><td class="num dim">#7</td>
+      <td class="num b">565.0</td><td class="num dim">706.0</td>
+      <td class="num b">80.0%</td>
+      <td class="num"><span class="down">-6.7pt</span></td>
+      <td class="num"><span class="mv up">▲2</span></td>
+      <td class="num"><span class="down">-47.0</span></td>
+      <td class="note">退单 47 台，跌破 80%</td>
+    </tr>
+    <tr class="barrow"><td colspan="12"><div class="barbg"><div class="bar" style="width:80%"></div></div></td></tr><tr>
+      <td><span class="rk ">10</span></td>
+      <td class="nm">黄伟峰</td>
+      <td class="num">1,264</td><td class="num dim">1,469</td><td class="num">86.0%</td><td class="num dim">#9</td>
+      <td class="num b">1,168.0</td><td class="num dim">1,469.0</td>
+      <td class="num b">79.5%</td>
+      <td class="num"><span class="down">-6.5pt</span></td>
+      <td class="num"><span class="mv up">▲1</span></td>
+      <td class="num"><span class="down">-96.0</span></td>
+      <td class="note">退单 96 台，跌幅明显</td>
+    </tr>
+    <tr class="barrow"><td colspan="12"><div class="barbg"><div class="bar" style="width:80%"></div></div></td></tr><tr>
+      <td><span class="rk ">11</span></td>
+      <td class="nm">高峰强</td>
+      <td class="num new" colspan="4">— 新设区域 —</td>
+      <td class="num b">260.0</td><td class="num dim">338.0</td>
+      <td class="num b">76.9%</td>
+      <td class="num"><span class="flat">新</span></td>
+      <td class="num"><span class="mv newm">新</span></td>
+      <td class="num"><span class="flat">—</span></td>
+      <td class="note">新入榜 · 承接余子恩划转</td>
+    </tr>
+    <tr class="barrow"><td colspan="12"><div class="barbg"><div class="bar" style="width:77%"></div></div></td></tr><tr>
+      <td><span class="rk ">12</span></td>
+      <td class="nm">郭天文</td>
+      <td class="num">464</td><td class="num dim">567</td><td class="num">81.8%</td><td class="num dim">#11<sup>贾</sup></td>
+      <td class="num b">407.0</td><td class="num dim">567.0</td>
+      <td class="num b">71.8%</td>
+      <td class="num"><span class="down">-10.0pt</span></td>
+      <td class="num"><span class="mv swap">换</span></td>
+      <td class="num"><span class="down">-57.0</span></td>
+      <td class="note">接替贾迪赫 · 目标 567 不变</td>
+    </tr>
+    <tr class="barrow"><td colspan="12"><div class="barbg"><div class="bar" style="width:72%"></div></div></td></tr></tbody>
+  </table>
+  <div class="legend"><span><b>▲▼</b> 排名较 11/1 上升/下降</span><span><b>红/绿</b> 数值升/降（含退单与划转影响）</span><span><b>贾</b> = 贾迪赫（已换郭天文）</span></div>
+</div>
+
+<div class="notes">
+  <h3>口径调整说明（对比时请注意）</h3>
+  <ul>
+    <li><b>贾迪赫 → 郭天文</b>：原贾迪赫区域由郭天文接手，全月目标 567 不变；锁单 464 → 407（−57，含退单）。</li>
+    <li><b>余子恩 → 高峰强</b>：余子恩拆出 338 全月目标及对应门店给高峰强；余子恩 1,794→1,456（达成率 89.9% 持平），高峰强新入榜 76.9%。</li>
+    <li><b>李博恩 ↔ 李传华</b>：数据显示另有 674 目标在两人之间划转（1,323+863 → 649+1,537），两人达成率口径前后不可直接比，划转原因建议与报表归属核实。</li>
+    <li>11/1→11/11 的锁单下降主要为近期退单：大区合计 −432 台、完成率 −3.9pt；剔除划转门店后仍普遍小幅回落。</li>
+  </ul>
+</div>
+<div class="foot">华南大区零售运营 · 快照 2026-10-31 / 最新 2026-11-11 · 生成于 2026-11-11</div>
+</div></body></html>
